@@ -23,6 +23,7 @@ o_devel = open('.file-list-devel', 'w')
 o_container = open('.file-list-container', 'w')
 o_remote = open('.file-list-remote', 'w')
 o_tests = open('.file-list-tests', 'w')
+o_sysusers = open('.file-list-sysusers', 'w')
 o_rest = open('.file-list-rest', 'w')
 for file in files(buildroot):
     n = file.path[1:]
@@ -51,6 +52,8 @@ for file in files(buildroot):
         o = o_pam
     elif '/rpm/' in n:
         o = o_rpm_macros
+    elif '/usr/bin/systemd-sysusers' in n:
+        o = o_sysusers
     elif re.search(r'/lib.*\.pc|/man3/|/usr/include|(?<!/libsystemd-shared-...).so$', n):
         o = o_devel
     elif '/usr/lib/systemd/tests' in n:

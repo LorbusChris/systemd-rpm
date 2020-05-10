@@ -148,6 +148,7 @@ Requires:       dbus >= 1.9.18
 Requires:       %{name}-pam = %{version}-%{release}
 Requires:       %{name}-rpm-macros = %{version}-%{release}
 Requires:       %{name}-libs = %{version}-%{release}
+Requires:       %{name}-sysusers = %{version}-%{release}
 Recommends:     diffutils
 Requires:       util-linux
 Recommends:     libxkbcommon%{?_isa}
@@ -303,6 +304,14 @@ and to write journal files from serialized journal contents.
 
 This package contains systemd-journal-gatewayd,
 systemd-journal-remote, and systemd-journal-upload.
+
+%package sysusers
+Summary:       Systemd-sysusers binary
+Requires:      %{name}-libs%{?_isa} = %{version}-%{release}
+License:       LGPLv2+
+
+%description sysusers
+Systemd-sysusers binary
 
 %package tests
 Summary:       Internal unit tests for systemd
@@ -768,6 +777,8 @@ fi
 %files container -f .file-list-container
 
 %files journal-remote -f .file-list-remote
+
+%files sysusers -f .file-list-sysusers
 
 %files tests -f .file-list-tests
 
